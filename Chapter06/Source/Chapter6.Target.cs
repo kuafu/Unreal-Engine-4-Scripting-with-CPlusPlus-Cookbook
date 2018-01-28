@@ -5,21 +5,11 @@ using System.Collections.Generic;
 
 public class Chapter6Target : TargetRules
 {
-	public Chapter6Target(TargetInfo Target)
+	public Chapter6Target(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
+		ExtraModuleNames.AddRange( new string[] { "Chapter6" } );
 	}
 
-	//
-	// TargetRules interface.
-	//
 
-	public override void SetupBinaries(
-		TargetInfo Target,
-		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
-		ref List<string> OutExtraModuleNames
-		)
-	{
-		OutExtraModuleNames.AddRange( new string[] { "Chapter6" } );
-	}
 }

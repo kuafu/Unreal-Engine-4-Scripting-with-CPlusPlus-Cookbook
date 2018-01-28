@@ -4,7 +4,7 @@ using UnrealBuildTool;
 
 public class Chapter6 : ModuleRules
 {
-	public Chapter6(TargetInfo Target)
+	public Chapter6(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 

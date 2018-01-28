@@ -4,7 +4,7 @@ using UnrealBuildTool;
 
 public class Chapter8Editor : ModuleRules
 {
-	public Chapter8Editor(TargetInfo Target)
+	public Chapter8Editor(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "RHI", "RenderCore", "ShaderCore", "MainFrame", "AssetTools", "AppFramework", "PropertyEditor"});
 		PublicDependencyModuleNames.Add("Chapter8");

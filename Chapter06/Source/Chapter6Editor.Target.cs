@@ -5,21 +5,10 @@ using System.Collections.Generic;
 
 public class Chapter6EditorTarget : TargetRules
 {
-	public Chapter6EditorTarget(TargetInfo Target)
+	public Chapter6EditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
+		ExtraModuleNames.AddRange( new string[] { "Chapter6" } );
 	}
 
-	//
-	// TargetRules interface.
-	//
-
-	public override void SetupBinaries(
-		TargetInfo Target,
-		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
-		ref List<string> OutExtraModuleNames
-		)
-	{
-		OutExtraModuleNames.AddRange( new string[] { "Chapter6" } );
-	}
 }
