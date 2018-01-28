@@ -25,11 +25,13 @@ void AAttributeGameMode::BeginPlay()
 		[
 			SNew(SButton)
 			.Content()
-		[
-			SNew(STextBlock)
-			.Text(TAttribute<FText>::Create(TAttribute<FText>::FGetter::CreateUObject(this, &AAttributeGameMode::GetButtonLabel)))
-		]
+			[
+				SNew(STextBlock)
+				.Text(TAttribute<FText>::Create(TAttribute<FText>::FGetter::CreateUObject(this, 
+					&AAttributeGameMode::GetButtonLabel)))
+			]
 		];
-	GEngine->GameViewport->AddViewportWidgetForPlayer(GetWorld()->GetFirstLocalPlayerFromController(), Widget.ToSharedRef(), 1);
 
+	GEngine->GameViewport->AddViewportWidgetForPlayer(GetWorld()->GetFirstLocalPlayerFromController(),
+		Widget.ToSharedRef(), 1);
 }

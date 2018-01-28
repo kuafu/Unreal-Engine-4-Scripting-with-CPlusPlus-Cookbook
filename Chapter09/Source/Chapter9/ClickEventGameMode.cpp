@@ -14,11 +14,11 @@ void AClickEventGameMode::BeginPlay()
 		[
 			SNew(SButton)
 			.OnClicked(FOnClicked::CreateUObject(this, &AClickEventGameMode::ButtonClicked))
-		.Content()
-		[
-			SAssignNew(ButtonLabel, STextBlock)
-			.Text(FText::FromString(TEXT("Click me!")))
-		]
+			.Content()
+			[
+				SAssignNew(ButtonLabel, STextBlock)
+				.Text(FText::FromString(TEXT("Click me!")))
+			]
 		];
 
 	GEngine->GameViewport->AddViewportWidgetForPlayer(GetWorld()->GetFirstLocalPlayerFromController(), Widget.ToSharedRef(), 1);
@@ -26,7 +26,6 @@ void AClickEventGameMode::BeginPlay()
 	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = true;
 
 	GEngine->GetFirstLocalPlayerController(GetWorld())->SetInputMode(FInputModeUIOnly().SetLockMouseToViewport(false).SetWidgetToFocus(Widget));
-
 }
 
 FReply AClickEventGameMode::ButtonClicked()

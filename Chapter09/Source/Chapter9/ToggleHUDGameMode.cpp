@@ -3,9 +3,6 @@
 #include "ToggleHUDGameMode.h"
 #include "Chapter9.h"
 
-
-
-
 void AToggleHUDGameMode::BeginPlay()
 {
 	Super::BeginPlay();
@@ -16,17 +13,18 @@ void AToggleHUDGameMode::BeginPlay()
 		[
 			SNew(SButton)
 			.Content()
-		[
-			SNew(STextBlock)
-			.Text(FText::FromString(TEXT("Test button")))
-		]
+			[
+				SNew(STextBlock)
+				.Text(FText::FromString(TEXT("Test button")))
+			]
 		];
+
 	GEngine->GameViewport->AddViewportWidgetForPlayer(GetWorld()->GetFirstLocalPlayerFromController(), widget.ToSharedRef(), 1);
 
 	GetWorld()->GetTimerManager().SetTimer(HUDToggleTimer, FTimerDelegate::CreateLambda
-	([this] 
+	([this]
 	{
-		if (this->widget->GetVisibility().IsVisible())
+		if(this->widget->GetVisibility().IsVisible())
 		{
 			this->widget->SetVisibility(EVisibility::Hidden);
 

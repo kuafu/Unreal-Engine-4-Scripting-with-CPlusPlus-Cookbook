@@ -13,7 +13,5 @@ class CHAPTER9_API ACustomHUDGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
-		ACustomHUDGameMode();
-	
-	
+	ACustomHUDGameMode();
 };

@@ -13,9 +13,6 @@ class CHAPTER9_API AScalingUIPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
-	
-	
-	
 public:
 	virtual void BeginPlay() override;
 

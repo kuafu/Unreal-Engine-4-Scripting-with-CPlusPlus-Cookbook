@@ -11,9 +11,5 @@
 UCLASS()
 class CHAPTER9_API ASlateHUD : public AHUD
 {
-	GENERATED_BODY()
-	
-	
-	
-	
+	GENERATED_BODY()	
 };

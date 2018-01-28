@@ -16,16 +16,17 @@ void AStyledHUDGameMode::BeginPlay()
 		[
 			SNew(SButton)
 			.ButtonStyle(FCookbookStyle::Get(), "NormalButtonBrush")
-		.ContentPadding(FMargin(16))
-		.Content()
-		[
-			SNew(STextBlock)
-			.TextStyle(FCookbookStyle::Get(), "NormalButtonText")
-		.Text(FText::FromString("Styled Button"))
-		]
+			.ContentPadding(FMargin(16))
+			.Content()
+			[
+				SNew(STextBlock)
+				.TextStyle(FCookbookStyle::Get(), "NormalButtonText")
+				.Text(FText::FromString("Styled Button"))
+			]
 		];
-	GEngine->GameViewport->AddViewportWidgetForPlayer(GetWorld()->GetFirstLocalPlayerFromController(), Widget.ToSharedRef(), 1);
 
+	GEngine->GameViewport->AddViewportWidgetForPlayer(GetWorld()->GetFirstLocalPlayerFromController(),
+		Widget.ToSharedRef(), 1);
 }
 
 

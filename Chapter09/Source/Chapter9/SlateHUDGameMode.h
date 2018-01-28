@@ -13,7 +13,6 @@ class CHAPTER9_API ASlateHUDGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
-		ASlateHUDGameMode();
-	
+	ASlateHUDGameMode();
 	
 };

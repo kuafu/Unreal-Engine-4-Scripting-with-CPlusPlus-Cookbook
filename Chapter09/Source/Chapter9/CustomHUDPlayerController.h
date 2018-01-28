@@ -15,5 +15,4 @@ class CHAPTER9_API ACustomHUDPlayerController : public APlayerController
 	
 public:
 	virtual void BeginPlay() override;
-
 };

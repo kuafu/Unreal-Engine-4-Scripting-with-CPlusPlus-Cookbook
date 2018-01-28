@@ -13,16 +13,13 @@ class CHAPTER9_API AToggleHUDGameMode : public AGameMode
 {
 	GENERATED_BODY()
 	
-	
-	
-	
 public:
 	virtual void BeginPlay() override;
+
 	UPROPERTY()
-		FTimerHandle HUDToggleTimer;
+	FTimerHandle HUDToggleTimer;
 	
 	TSharedPtr<SVerticalBox> widget;
 
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
-
 };
