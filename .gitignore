@@ -45,3 +45,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/Chapter09/Intermediate
+/Chapter09/*.sdf
+/Chapter09/*.opendb

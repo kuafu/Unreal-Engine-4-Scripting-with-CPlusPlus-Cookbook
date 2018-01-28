@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "StyledHUDGameMode.h"
 #include "Chapter9.h"
 #include "CookbookStyle.h"
-#include "StyledHUDGameMode.h"
 
 
 void AStyledHUDGameMode::BeginPlay()

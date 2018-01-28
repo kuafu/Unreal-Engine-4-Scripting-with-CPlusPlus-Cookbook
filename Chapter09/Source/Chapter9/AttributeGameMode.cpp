@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Chapter9.h"
 #include "AttributeGameMode.h"
+#include "Chapter9.h"
 
 
 
@@ -16,6 +16,8 @@ void AAttributeGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
+	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = true;
+
 	Widget = SNew(SVerticalBox)
 		+ SVerticalBox::Slot()
 		.HAlign(HAlign_Center)
@@ -23,10 +25,10 @@ void AAttributeGameMode::BeginPlay()
 		[
 			SNew(SButton)
 			.Content()
-			[
-				SNew(STextBlock)
-				.Text( TAttribute<FText>::Create(TAttribute<FText>::FGetter::CreateUObject(this, &AAttributeGameMode::GetButtonLabel)))
-			]
+		[
+			SNew(STextBlock)
+			.Text(TAttribute<FText>::Create(TAttribute<FText>::FGetter::CreateUObject(this, &AAttributeGameMode::GetButtonLabel)))
+		]
 		];
 	GEngine->GameViewport->AddViewportWidgetForPlayer(GetWorld()->GetFirstLocalPlayerFromController(), Widget.ToSharedRef(), 1);
 

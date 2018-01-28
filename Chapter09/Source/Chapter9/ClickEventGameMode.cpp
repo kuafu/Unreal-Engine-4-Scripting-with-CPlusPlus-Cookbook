@@ -1,9 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Chapter9.h"
 #include "ClickEventGameMode.h"
-
-
+#include "Chapter9.h"
 
 
 void AClickEventGameMode::BeginPlay()
@@ -16,16 +14,18 @@ void AClickEventGameMode::BeginPlay()
 		[
 			SNew(SButton)
 			.OnClicked(FOnClicked::CreateUObject(this, &AClickEventGameMode::ButtonClicked))
-			.Content()
-			[
-				SAssignNew(ButtonLabel, STextBlock)
-				.Text(FText::FromString(TEXT("Click me!")))
-			]
+		.Content()
+		[
+			SAssignNew(ButtonLabel, STextBlock)
+			.Text(FText::FromString(TEXT("Click me!")))
+		]
 		];
+
 	GEngine->GameViewport->AddViewportWidgetForPlayer(GetWorld()->GetFirstLocalPlayerFromController(), Widget.ToSharedRef(), 1);
+	
 	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = true;
-	GEngine->GetFirstLocalPlayerController(GetWorld())->
-		SetInputMode(FInputModeUIOnly().SetLockMouseToViewport(false).SetWidgetToFocus(Widget));
+
+	GEngine->GetFirstLocalPlayerController(GetWorld())->SetInputMode(FInputModeUIOnly().SetLockMouseToViewport(false).SetWidgetToFocus(Widget));
 
 }
 
