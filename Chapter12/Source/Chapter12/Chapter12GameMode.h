@@ -77,10 +77,13 @@ public:
   void SpawnFoliageInstance(UWorld* InWorld, const UFoliageType* Settings,
     const FFoliageInstance& Instance, UActorComponent* BaseComponent);
 
-  // Gets you all landscapes in the level.
-  TArray<ALandscape*> GetLandscapes();
+  //// Gets you all landscapes in the level.
+  //TArray<ALandscape*> GetLandscapes();
+
   int32 GetNumHeights( ALandscape* landscape );
+
   uint16 PerlinNoise2D( float x, float y, float amp, int32 octaves, int32 px, int32 py );
+
   UFUNCTION( BlueprintCallable, Category="MapGen" )
   void Gen();
   
