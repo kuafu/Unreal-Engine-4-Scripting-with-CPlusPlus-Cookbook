@@ -16,7 +16,7 @@ void AChapter2GameMode::BeginPlay()
   if( gm )
   {
     // Using ConstructObject:
-    UUserProfile* constructedobject = ConstructObject<UUserProfile>( UUserProfile::StaticClass() );
+    UUserProfile* constructedobject = NewObject<UUserProfile>( UUserProfile::StaticClass() );
 
     // Using NewObject instead:
     UUserProfile* newobject = NewObject<UUserProfile>( GetTransientPackage(), UUserProfile::StaticClass() );

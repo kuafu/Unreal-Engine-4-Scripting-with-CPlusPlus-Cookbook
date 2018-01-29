@@ -3,7 +3,7 @@
 #include "Chapter2.h"
 #include "ColoredTexture.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct CHAPTER2_API FColoredTexture
 {
 	GENERATED_USTRUCT_BODY()
