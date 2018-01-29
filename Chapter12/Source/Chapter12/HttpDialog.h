@@ -14,9 +14,9 @@ class CHAPTER12_API UHttpDialog : public UUserWidget
 {
 	GENERATED_BODY()
 public:
-  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Stats)
-  UProgressBar* progressBar;
-  
-  UHttpDialog( const FObjectInitializer& PCIP );
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Stats)
+	UProgressBar* progressBar;
+
+	UHttpDialog(const FObjectInitializer& PCIP);
 	virtual void OnWidgetRebuilt() override;
 };

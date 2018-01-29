@@ -8,7 +8,7 @@
 //   UE_LOG( LogCh12, Display, TEXT( "Your info message" ) );
 //   UE_LOG( LogCh12, Warning, TEXT( "Your message %d" ), 2941 );
 //   UE_LOG( LogCh12, Error, TEXT( "Your message %f" ), 190.4f );
-DECLARE_LOG_CATEGORY_EXTERN( LogCh12, Log, All );
+DECLARE_LOG_CATEGORY_EXTERN(LogCh12, Log, All);
 
 //#define LOCTEXT_NAMESPACE "Chapter12"
 //#define FTEXT(x) LOCTEXT( x, x )
@@ -17,7 +17,7 @@ DECLARE_LOG_CATEGORY_EXTERN( LogCh12, Log, All );
 extern FName LoggerName;
 
 // Functions for logging
-void CreateLogger( FName logName );
-void Error( FString msg );
-void Warning( FString msg );
-void Info( FString msg );
+void CreateLogger(FName logName);
+void Error(FString msg);
+void Warning(FString msg);
+void Info(FString msg);

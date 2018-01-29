@@ -6,9 +6,11 @@ USTRUCT(Blueprintable, BlueprintType)
 struct FGameUnitAttributeStatsRow : public FTableRowBase
 {
 	GENERATED_USTRUCT_BODY()
-	UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Stats )
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Stats)
 	float StartingHp;
-	UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Stats )
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Stats)
 	float StartingMana;
 };
 
