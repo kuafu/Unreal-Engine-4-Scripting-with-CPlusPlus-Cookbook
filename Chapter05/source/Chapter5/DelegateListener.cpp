@@ -23,7 +23,7 @@ void ADelegateListener::BeginPlay()
 	UWorld* TheWorld = GetWorld();
 	if (TheWorld != nullptr)
 	{
-		AGameMode* GameMode = UGameplayStatics::GetGameMode(TheWorld);
+		AGameModeBase* GameMode = UGameplayStatics::GetGameMode(TheWorld);
 		AUE4CookbookGameMode * MyGameMode = Cast<AUE4CookbookGameMode>(GameMode);
 		if (MyGameMode != nullptr)
 		{
@@ -51,7 +51,7 @@ void ADelegateListener::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	UWorld* TheWorld = GetWorld();
 	if (TheWorld != nullptr)
 	{
-		AGameMode* GameMode = UGameplayStatics::GetGameMode(TheWorld);
+		AGameModeBase* GameMode = UGameplayStatics::GetGameMode(TheWorld);
 		AUE4CookbookGameMode * MyGameMode = Cast<AUE4CookbookGameMode>(GameMode);
 		if (MyGameMode != nullptr)
 		{

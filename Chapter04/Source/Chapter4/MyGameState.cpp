@@ -25,7 +25,7 @@ void AMyGameState::BeginPlay()
 	UWorld* TheWorld = GetWorld();
 	if (TheWorld != nullptr)
 	{
-		AGameMode* GameMode = UGameplayStatics::GetGameMode(TheWorld);
+		AGameMode* GameMode = Cast<AGameMode>( UGameplayStatics::GetGameMode(TheWorld) );
 		AUE4CookbookGameMode * MyGameMode = Cast<AUE4CookbookGameMode>(GameMode);
 		
 	}

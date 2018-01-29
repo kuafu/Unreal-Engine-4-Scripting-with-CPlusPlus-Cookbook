@@ -3,6 +3,7 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
+#include "Pickup.h"
 #include "PickupSpawner.generated.h"
 
 UCLASS()
@@ -21,10 +22,10 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 	UPROPERTY()
-		USceneComponent* SpawnLocation;
+	USceneComponent* SpawnLocation;
 
 	UFUNCTION()
-		void PickupCollected();
+	void PickupCollected();
 	
 	UFUNCTION()
 	void SpawnPickup();

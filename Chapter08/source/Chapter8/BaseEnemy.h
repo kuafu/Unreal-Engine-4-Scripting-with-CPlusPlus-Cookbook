@@ -21,7 +21,8 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 	UPROPERTY()
-		FString WeaponName;
+	FString WeaponName;
+
 	UPROPERTY()
-		int32 MaximumHealth;
+	int32 MaximumHealth;
 };

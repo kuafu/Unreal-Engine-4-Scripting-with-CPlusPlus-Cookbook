@@ -16,6 +16,5 @@ class CHAPTER9_API AStyledHUDGameMode : public AGameMode
 	TSharedPtr<SVerticalBox> Widget;
 public:
 	virtual void BeginPlay() override;
-
 	
 };

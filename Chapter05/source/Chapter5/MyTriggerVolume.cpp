@@ -36,7 +36,7 @@ void AMyTriggerVolume::NotifyActorBeginOverlap(AActor* OtherActor)
 	UWorld* TheWorld = GetWorld();
 	if (TheWorld != nullptr)
 	{
-		AGameMode* GameMode = UGameplayStatics::GetGameMode(TheWorld);
+		AGameModeBase* GameMode = UGameplayStatics::GetGameMode(TheWorld);
 		AUE4CookbookGameMode * MyGameMode = Cast<AUE4CookbookGameMode>(GameMode);
 		MyGameMode->MyStandardDelegate.ExecuteIfBound();
 		MyGameMode->MyParameterDelegate.ExecuteIfBound(FLinearColor(1, 0, 0, 1));

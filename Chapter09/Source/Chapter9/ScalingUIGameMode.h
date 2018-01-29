@@ -13,7 +13,5 @@ class CHAPTER9_API AScalingUIGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
-		AScalingUIGameMode();
-	
-	
+	AScalingUIGameMode();
 };

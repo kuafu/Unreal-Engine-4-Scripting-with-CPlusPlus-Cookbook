@@ -12,8 +12,4 @@ UCLASS()
 class CHAPTER11_API AChapter11GameMode : public AGameMode
 {
 	GENERATED_BODY()
-	
-	
-	
-	
 };

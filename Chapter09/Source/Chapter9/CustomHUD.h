@@ -13,9 +13,6 @@ class CHAPTER9_API ACustomHUD : public AHUD
 {
 	GENERATED_BODY()
 	
-	
-	
-	
 public:
 	virtual void DrawHUD() override;
 

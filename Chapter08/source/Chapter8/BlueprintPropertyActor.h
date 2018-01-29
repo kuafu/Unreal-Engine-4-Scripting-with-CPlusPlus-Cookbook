@@ -21,8 +21,9 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 	UPROPERTY(BlueprintReadWrite, Category = Cookbook)
-		bool ReadWriteProperty;
+	bool ReadWriteProperty;
+
 	UPROPERTY(BlueprintReadOnly, Category = Cookbook)
-		bool ReadOnlyProperty;
+	bool ReadOnlyProperty;
 	
 };

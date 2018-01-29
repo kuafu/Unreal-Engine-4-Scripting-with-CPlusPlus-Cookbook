@@ -44,7 +44,6 @@ public:
 
 
 
-
 class FMySceneProxy : public FPrimitiveSceneProxy
 {
 public:
@@ -58,7 +57,7 @@ public:
 		VertexBuffer = FMyVertexBuffer();
 		IndexBuffer = FMyIndexBuffer();
 
-		for (FVector Vertex : Component->Vertices)
+		for(FVector Vertex : Component->Vertices)
 		{
 			Vertices.Add(FDynamicMeshVertex(Component->GetComponentLocation() + Vertex));
 		}
@@ -79,11 +78,11 @@ public:
 
 	virtual void GetDynamicMeshElements(const TArray<const FSceneView*>& Views, const FSceneViewFamily& ViewFamily, uint32 VisibilityMap, FMeshElementCollector& Collector) const override
 	{
-		for (int32 ViewIndex = 0; ViewIndex < Views.Num(); ViewIndex++)
+		for(int32 ViewIndex = 0; ViewIndex < Views.Num(); ViewIndex++)
 		{
 
 			FDynamicMeshBuilder MeshBuilder;
-			if (Vertices.Num() == 0)
+			if(Vertices.Num() == 0)
 			{
 				return;
 			}
@@ -95,7 +94,7 @@ public:
 		}
 	}
 
-	void FMySceneProxy::OnActorPositionChanged() override
+	void FMySceneProxy::OnActorPositionChanged()
 	{
 		VertexBuffer.ReleaseResource();
 		IndexBuffer.ReleaseResource();
@@ -117,9 +116,6 @@ private:
 
 
 
-
-
-
 FPrimitiveSceneProxy* UMyMeshComponent::CreateSceneProxy()
 {
 	FPrimitiveSceneProxy* Proxy = NULL;
@@ -131,12 +127,10 @@ UMyMeshComponent::UMyMeshComponent()
 {
 	static ConstructorHelpers::FObjectFinder<UMaterial> Material(TEXT("Material'/Engine/BasicShapes/BasicShapeMaterial'"));
 
-	if (Material.Object != NULL)
+	if(Material.Object != NULL)
 	{
 		TheMaterial = (UMaterial*)Material.Object;
 	}
-
-
 
 	Vertices.Add(FVector(10, 0, 0));
 	Vertices.Add(FVector(0, 10, 0));

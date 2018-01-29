@@ -14,7 +14,8 @@ class CHAPTER8_API APeasant : public AStaticMeshActor
 {
 	GENERATED_BODY()
 public:
-		APeasant();
-		UFUNCTION(BlueprintCallable, category = Peasant)
-			void Flee(AKing* DeadKing);
+	APeasant();
+
+	UFUNCTION(BlueprintCallable, category = Peasant)
+	void Flee(AKing* DeadKing);
 };

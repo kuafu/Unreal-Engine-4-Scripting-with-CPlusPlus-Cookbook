@@ -6,7 +6,7 @@
 #include "OnConstructionActor.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class CHAPTER8_API AOnConstructionActor : public AStaticMeshActor
@@ -15,9 +15,10 @@ class CHAPTER8_API AOnConstructionActor : public AStaticMeshActor
 
 public:
 
-		AOnConstructionActor();
-	
-		virtual void OnConstruction(const FTransform& Transform) override;
-		UPROPERTY(EditAnywhere)
-			bool ShowStaticMesh;
+	AOnConstructionActor();
+
+	virtual void OnConstruction(const FTransform& Transform) override;
+
+	UPROPERTY(EditAnywhere)
+	bool ShowStaticMesh;
 };

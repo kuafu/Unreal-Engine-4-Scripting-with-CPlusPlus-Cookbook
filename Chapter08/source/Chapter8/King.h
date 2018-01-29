@@ -23,7 +23,7 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 	UFUNCTION(BlueprintCallable, Category = King)
-		void Die();
+	void Die();
 
 	UPROPERTY(BlueprintAssignable)
 	FOnKingDeathSignature OnKingDeath;
