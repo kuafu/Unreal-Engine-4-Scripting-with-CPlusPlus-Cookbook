@@ -1,6 +1,15 @@
 [![GitHub issues](https://img.shields.io/github/issues/PacktPublishing/Unreal-Engine-4-Scripting-with-CPlusPlus-Cookbook.svg)](https://github.com/PacktPublishing/Unreal-Engine-4-Scripting-with-CPlusPlus-Cookbook/issues)   [![GitHub forks](https://img.shields.io/github/forks/PacktPublishing/Unreal-Engine-4-Scripting-with-CPlusPlus-Cookbook.svg)](https://github.com/PacktPublishing/Unreal-Engine-4-Scripting-with-CPlusPlus-Cookbook/network)   [![GitHub stars](https://img.shields.io/github/stars/PacktPublishing/Unreal-Engine-4-Scripting-with-CPlusPlus-Cookbook.svg)](https://github.com/PacktPublishing/Unreal-Engine-4-Scripting-with-CPlusPlus-Cookbook/stargazers)   [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/PacktPublishing/Unreal-Engine-4-Scripting-with-CPlusPlus-Cookbook/master/LICENSE)
 
-#Unreal Engine 4 Scripting with C++ Cookbook
+
+内容说明
+---------------------------------------------------------------------------------------
+|----------|-----------------|----------------------------|
+|-- CH12 --|-- Gameplay Abilities --|-- 没太多有价值的东西，只是里面对数据表的使用有点新鲜 --|
+
+
+
+Unreal Engine 4 Scripting with C++ Cookbook
+---------------------------------------------------------------------------------------
 This is the code repository for [Unreal Engine 4 Scripting with C++ Cookbook](https://www.packtpub.com/game-development/unreal-engine-4-scripting-c-cookbook?utm_source=Github&utm_medium=Repository&utm_campaign=9781785885549), published by Packt. It contains all the supporting project files necessary to work through the book from start to finish.
 ##Instructions and Navigations
 All of the code is organized into folders. Each folder starts with a number followed by the application name. For example, Chapter02.
@@ -30,7 +39,7 @@ Software and Hardware List
 | -------- | ----------------------------- | ----------------------------------|
 | 1 to 12  |Visual Studio 2015 CE, Unreal  | Windows Vista or newer,           |
 |          |Engine 4.11 or greater.        | OSX, or recent Linux distribution |
-                                      
+
 
 ##Related Products
 * [Unreal Engine 4.X By Example](https://www.packtpub.com/game-development/unreal-engine-4x-example?utm_source=Github&utm_medium=Repository&utm_campaign=9781785885532)
