@@ -20,7 +20,14 @@
 		{
 			"Name": "ModoMaterialImporter",
 			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/offers/9cbfb639f28d446983f74d8d400563e0"
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/9cbfb639f28d446983f74d8d400563e0"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "GameplayAbilities",
+			"Enabled": true
 		}
 	]
+
 }
