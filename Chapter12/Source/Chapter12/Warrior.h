@@ -14,21 +14,21 @@
 
 UCLASS()
 class CHAPTER12_API AWarrior : public ACharacter, 
-  public IAbilitySystemInterface, public IGameplayTaskOwnerInterface
+	public IAbilitySystemInterface, public IGameplayTaskOwnerInterface
 {
 	GENERATED_BODY()
-public:	
+public:
 	// Lists key triggers for various abilities for the player.
 	// Selects an instance of UGameplayAbilitySet (which is a UDataAsset derivative
 	// that you construct in the Content Browser).
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Stats)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stats)
 	UGameplayAbilitySet* gameplayAbilitySet;
 
 	// The AbilitySystemComponent itself
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Stats)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stats)
 	UAbilitySystemComponent* AbilitySystemComponent;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Stats)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stats)
 	UGameplayTasksComponent* GameplayTasksComponent;
 
 	// This is the particleSystem that we create with the
@@ -48,20 +48,24 @@ public:
 	virtual UGameplayTasksComponent* GetGameplayTasksComponent(const UGameplayTask& Task) const { return GameplayTasksComponent; }
 	// This gets called both when task starts and when task gets resumed.
 	// Check Task.GetStatus() if you want to differenciate.
-	virtual void OnTaskActivated(UGameplayTask& Task) {
+	virtual void OnTaskActivated(UGameplayTask& Task) 
+	{ 
 		Info(FS("Task %s activated", *Task.GetInstanceName().ToString()));
 	}
+
 	// This gets called both when task finished and when task gets paused. 
 	// Check Task.GetStatus() if you want to differenciate.
 	virtual void OnTaskDeactivated(UGameplayTask& Task) { }
-	virtual AActor* GetOwnerActor(const UGameplayTask* Task) const {
+
+	virtual AActor* GetOwnerActor(const UGameplayTask* Task) const 
+	{
 		return Task->GetOwnerActor();  // This will give us the accurate answer for the Task..
 	}
 	// </End GameplayTaskOwnerInterface>
 
 	virtual void PostInitializeComponents() override;
 
-	virtual void SetupPlayerInputComponent(UInputComponent* Input);
+	virtual void SetupPlayerInputComponent(UInputComponent* Input)override;
 
 	void Forward(float amount);
 	void Back(float amount);

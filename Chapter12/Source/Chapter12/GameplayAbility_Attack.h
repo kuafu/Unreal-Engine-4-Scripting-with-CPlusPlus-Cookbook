@@ -18,13 +18,15 @@ public:
 	}
 
 	/** Returns true if this ability can be activated right now. Has no side effects */
-	virtual bool CanActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayTagContainer* SourceTags = nullptr, const FGameplayTagContainer* TargetTags = nullptr, OUT FGameplayTagContainer* OptionalRelevantTags = nullptr) const {
+	virtual bool CanActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayTagContainer* SourceTags = nullptr, const FGameplayTagContainer* TargetTags = nullptr, OUT FGameplayTagContainer* OptionalRelevantTags = nullptr) const 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack CanActivateAbility!"));
 		return true;
 	}
 
 	/** Returns true if this ability can be triggered right now. Has no side effects */
-	virtual bool ShouldAbilityRespondToEvent(const FGameplayAbilityActorInfo* ActorInfo, const FGameplayEventData* Payload) const {
+	virtual bool ShouldAbilityRespondToEvent(const FGameplayAbilityActorInfo* ActorInfo, const FGameplayEventData* Payload) const
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack ShouldAbilityRespondToEvent!"));
 		return true;
 	}
@@ -36,7 +38,8 @@ public:
 	}
 
 	/** Returns the time in seconds remaining on the currently active cooldown and the original duration for this cooldown. */
-	virtual void GetCooldownTimeRemainingAndDuration(FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, float& TimeRemaining, float& CooldownDuration) const {
+	virtual void GetCooldownTimeRemainingAndDuration(FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, float& TimeRemaining, float& CooldownDuration) const 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack GetCooldownTimeRemainingAndDuration!"));
 		TimeRemaining = 0.f;
 		CooldownDuration = 1.f;
@@ -47,13 +50,15 @@ public:
 	}
 
 	/** Called when the ability is given to an AbilitySystemComponent */
-	virtual void OnGiveAbility(const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilitySpec& Spec) {
+	virtual void OnGiveAbility(const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilitySpec& Spec) 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack ability granted!"));
 		Super::OnGiveAbility(ActorInfo, Spec);
 	}
 
 	/** Called when the avatar actor is set/changes */
-	virtual void OnAvatarSet(const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilitySpec& Spec) {
+	virtual void OnAvatarSet(const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilitySpec& Spec) 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack avatarset!"));
 		Super::OnAvatarSet(ActorInfo, Spec);
 	}
@@ -79,7 +84,8 @@ public:
 	//  Super::OnTaskDeactivated(Task);
 	//}
 
-	virtual UGameplayTasksComponent* GetGameplayTasksComponent(const UGameplayTask& Task) const override {
+	virtual UGameplayTasksComponent* GetGameplayTasksComponent(const UGameplayTask& Task) const override 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack GetGameplayTasksComponent!"));
 		return Super::GetGameplayTasksComponent(Task);
 	}
@@ -98,13 +104,15 @@ public:
 	// --------------------------------------
 
 	/** Input binding stub. */
-	virtual void InputPressed(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) {
+	virtual void InputPressed(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo)
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack inputpressed!"));
 		Super::InputPressed(Handle, ActorInfo, ActivationInfo);
 	}
 
 	/** Input binding stub. */
-	virtual void InputReleased(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) {
+	virtual void InputReleased(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack inputreleased!"));
 		Super::InputReleased(Handle, ActorInfo, ActivationInfo);
 	}
@@ -112,7 +120,8 @@ public:
 	/** Destroys instanced-per-execution abilities. Instance-per-actor abilities should 'reset'.
 	Any active ability state tasks receive the 'OnAbilityStateInterrupted' event.
 	Non instance abilities - what can we do? */
-	virtual void CancelAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, bool bReplicateCancelAbility) {
+	virtual void CancelAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, bool bReplicateCancelAbility) 
+	{		
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack CancelAbility!"));
 		Super::CancelAbility(Handle, ActorInfo, ActivationInfo, bReplicateCancelAbility);
 	}
@@ -125,26 +134,31 @@ public:
 		Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 	}
 	/** Called on a predictive ability when the server confirms its execution */
-	virtual void ConfirmActivateSucceed() {
+	virtual void ConfirmActivateSucceed() 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack ConfirmActivateSucceed!"));
 		Super::ConfirmActivateSucceed();
 	}
 
 	UFUNCTION(BlueprintCallable, Category = "Abilities")
-		virtual void SendGameplayEvent(FGameplayTag EventTag, FGameplayEventData Payload) {
+	virtual void SendGameplayEvent(FGameplayTag EventTag, FGameplayEventData Payload)
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack SendGameplayEvent!"));
 		Super::SendGameplayEvent(EventTag, Payload);
 	}
 
-	virtual bool CommitAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) {
+	virtual bool CommitAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) 
+	{	
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack CommitAbility!"));
 		return Super::CommitAbility(Handle, ActorInfo, ActivationInfo);
 	}
-	virtual bool CommitAbilityCooldown(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const bool ForceCooldown) {
+	virtual bool CommitAbilityCooldown(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const bool ForceCooldown) 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack CommitAbilityCooldown!"));
 		return Super::CommitAbilityCooldown(Handle, ActorInfo, ActivationInfo, ForceCooldown);
 	}
-	virtual bool CommitAbilityCost(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) {
+	virtual bool CommitAbilityCost(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack CommitAbilityCost!"));
 		return Super::CommitAbilityCost(Handle, ActorInfo, ActivationInfo);
 	}
@@ -153,19 +167,22 @@ public:
 	 * The last chance to fail before commiting
 	 *	-This will usually be the same as CanActivateAbility. Some abilities may need to do extra checks here if they are consuming extra stuff in CommitExecute
 	 */
-	virtual bool CommitCheck(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) {
+	virtual bool CommitCheck(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo)
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack CommitCheck!"));
 		return Super::CommitCheck(Handle, ActorInfo, ActivationInfo);
 	}
 
 	/** Does the commit atomically (consume resources, do cooldowns, etc) */
-	virtual void CommitExecute(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) {
+	virtual void CommitExecute(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack CommitExecute!"));
 		Super::CommitExecute(Handle, ActorInfo, ActivationInfo);
 	}
 
 	/** Do boilerplate init stuff and then call ActivateAbility */
-	virtual void PreActivate(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, FOnGameplayAbilityEnded::FDelegate* OnGameplayAbilityEndedDelegate) {
+	virtual void PreActivate(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, FOnGameplayAbilityEnded::FDelegate* OnGameplayAbilityEndedDelegate) 
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack PreActivate!"));
 		Super::PreActivate(Handle, ActorInfo, ActivationInfo, OnGameplayAbilityEndedDelegate);
 	}
@@ -211,32 +228,37 @@ public:
 	}
 
 	/** Checks cooldown. returns true if we can be used again. False if not */
-	virtual bool CheckCooldown(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, OUT FGameplayTagContainer* OptionalRelevantTags = nullptr) const {
+	virtual bool CheckCooldown(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, OUT FGameplayTagContainer* OptionalRelevantTags = nullptr) const
+	{		
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack CheckCooldown!"));
 		return true;
 		//return Super::CheckCooldown( Handle, ActorInfo, OptionalRelevantTags );
 	}
 
 	/** Applies CooldownGameplayEffect to the target */
-	virtual void ApplyCooldown(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) const {
+	virtual void ApplyCooldown(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) const 
+	{		
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack ApplyCooldown!"));
 		Super::ApplyCooldown(Handle, ActorInfo, ActivationInfo);
 	}
 
 	/** Checks cost. returns true if we can pay for the ability. False if not */
-	virtual bool CheckCost(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, OUT FGameplayTagContainer* OptionalRelevantTags = nullptr) const {
+	virtual bool CheckCost(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, OUT FGameplayTagContainer* OptionalRelevantTags = nullptr) const 
+	{		
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack CheckCost!"));
 		return true;
 		//return Super::CheckCost( Handle, ActorInfo, OptionalRelevantTags );
 	}
 
 	/** Applies the ability's cost to the target */
-	virtual void ApplyCost(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) const {
+	virtual void ApplyCost(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo) const
+	{		
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack ApplyCost!"));
 		Super::ApplyCost(Handle, ActorInfo, ActivationInfo);
 	}
 
-	virtual void SetMovementSyncPoint(FName SyncName) {
+	virtual void SetMovementSyncPoint(FName SyncName)
+	{
 		UE_LOG(LogTemp, Warning, TEXT("ability_attack SetMovementSyncPoint!"));
 		Super::SetMovementSyncPoint(SyncName);
 	}

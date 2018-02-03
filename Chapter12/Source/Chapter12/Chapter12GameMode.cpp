@@ -80,7 +80,7 @@ void AChapter12GameMode::PostInitializeComponents()
 void AChapter12GameMode::BeginPlay()
 {
 	Super::BeginPlay();
-	TestHttp();
+	//TestHttp();
 }
 
 // Imported from FoliageEdMode.cpp
@@ -115,7 +115,7 @@ int32 AChapter12GameMode::GetNumHeights(ALandscape* landscape)
 	//	// #components * the component size.
 	//	return landscapeComponents.Num()*landscapeComponents[0]->ComponentSizeQuads;
 	//else
-		return 0;
+	return 0;
 }
 
 uint16 AChapter12GameMode::PerlinNoise2D(float x, float y, float amp, int32 octaves, int32 px, int32 py)

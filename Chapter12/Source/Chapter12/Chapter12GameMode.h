@@ -32,86 +32,87 @@ struct FFoliageInstance;
 UCLASS()
 class CHAPTER12_API AChapter12GameMode : public AGameMode
 {
-  GENERATED_BODY()
+	GENERATED_BODY()
 public:
-  AChapter12GameMode( const FObjectInitializer& PCIP );
+	AChapter12GameMode(const FObjectInitializer& PCIP);
 
-  virtual void PreInitializeComponents() override;
-  virtual void PostInitializeComponents() override;
-  virtual void BeginPlay() override;
+	virtual void PreInitializeComponents() override;
+	virtual void PostInitializeComponents() override;
+	virtual void BeginPlay() override;
 
-  UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Attributes )
-  UHttpDialog* HttpDialog;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Attributes)
+	UHttpDialog* HttpDialog;
 
-  UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Attributes )
-  UAttributeSet* Attribs;
-  
-  /// Fill this out with the tag table names
-  UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = GameplayTags )
-  TArray<FString> GameplayTagTableNames;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Attributes)
+	UAttributeSet* Attribs;
 
-  /// To select-in the foliage used.
-  UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Foliage )
-  TArray< UFoliageType* > FoliageTypes;
+	/// Fill this out with the tag table names
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = GameplayTags)
+	TArray<FString> GameplayTagTableNames;
 
-  /// Number of foliage trees to place
-  UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Foliage )
-  int32 NumTrees;
+	/// To select-in the foliage used.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Foliage)
+	TArray< UFoliageType* > FoliageTypes;
 
-  /// Scaling parameters
-  UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Foliage )
-  float ScalingMin;
-  UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Foliage )
-  float ScalingMax;
+	/// Number of foliage trees to place
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Foliage)
+	int32 NumTrees;
 
-  /// Foliage correlation
-  /// Trees sit within a band of values, eg 0.4 < PTV < 0.6.
-  /// This would have PTV=0.5 and Range=0.1.
-  UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Foliage )
-  float PerlinTreeValue;
+	/// Scaling parameters
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Foliage)
+	float ScalingMin;
 
-  /// The width of the band where a tree has a chance to place.
-  UPROPERTY( EditAnywhere, BlueprintReadWrite, Category = Foliage )
-  float PerlinTreeRange;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Foliage)
+		float ScalingMax;
 
-  void SpawnFoliageInstance(UWorld* InWorld, const UFoliageType* Settings,
-    const FFoliageInstance& Instance, UActorComponent* BaseComponent);
+	/// Foliage correlation
+	/// Trees sit within a band of values, eg 0.4 < PTV < 0.6.
+	/// This would have PTV=0.5 and Range=0.1.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Foliage)
+	float PerlinTreeValue;
 
-  //// Gets you all landscapes in the level.
-  //TArray<ALandscape*> GetLandscapes();
+	/// The width of the band where a tree has a chance to place.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Foliage)
+	float PerlinTreeRange;
 
-  int32 GetNumHeights( ALandscape* landscape );
+	void SpawnFoliageInstance(UWorld* InWorld, const UFoliageType* Settings,
+	const FFoliageInstance& Instance, UActorComponent* BaseComponent);
 
-  uint16 PerlinNoise2D( float x, float y, float amp, int32 octaves, int32 px, int32 py );
+	//// Gets you all landscapes in the level.
+	//TArray<ALandscape*> GetLandscapes();
 
-  UFUNCTION( BlueprintCallable, Category="MapGen" )
-  void Gen();
-  
-  void HttpRequestComplete( FHttpRequestPtr request, FHttpResponsePtr response, bool success );
-  void TestHttp();
-  void SendNetworkPacket();
+	int32 GetNumHeights(ALandscape* landscape);
+
+	uint16 PerlinNoise2D(float x, float y, float amp, int32 octaves, int32 px, int32 py);
+
+	UFUNCTION(BlueprintCallable, Category = "MapGen")
+	void Gen();
+
+	void HttpRequestComplete(FHttpRequestPtr request, FHttpResponsePtr response, bool success);
+	void TestHttp();
+	void SendNetworkPacket();
 };
 
 class PlainObject
 {
 public:
-  void httpHandler( FHttpRequestPtr request, FHttpResponsePtr response, bool success )
-  {
-    Info( "PlainObject: Http req handled" );
-  }
+	void httpHandler(FHttpRequestPtr request, FHttpResponsePtr response, bool success)
+	{
+		Info("PlainObject: Http req handled");
+	}
 };
 
 // Derive from TSharedFromThis to make THREADSAFE
 class SharedObject : public TSharedFromThis<SharedObject, ESPMode::ThreadSafe>
 {
 public:
-  void httpHandler( FHttpRequestPtr request, FHttpResponsePtr response, bool success )
-  {
-    Info( "SharedObject: Http req handled" );
-  }
+	void httpHandler(FHttpRequestPtr request, FHttpResponsePtr response, bool success)
+	{
+		Info("SharedObject: Http req handled");
+	}
 };
 
-inline void httpHandler( FHttpRequestPtr request, FHttpResponsePtr response, bool success )
+inline void httpHandler(FHttpRequestPtr request, FHttpResponsePtr response, bool success)
 {
-  Info( "static: Http req handled" );
+	Info("static: Http req handled");
 }

@@ -15,26 +15,25 @@ AWarrior::AWarrior(const FObjectInitializer& PCIP) : Super(PCIP)
 {
 	PrimaryActorTick.bCanEverTick = true;
 	gameplayAbilitySet = 0;
-	AbilitySystemComponent = PCIP.CreateDefaultSubobject<UAbilitySystemComponent>
-		(this, TEXT("UAbilitySystemComponent"));
-	GameplayTasksComponent = PCIP.CreateDefaultSubobject<UGameplayTasksComponent>
-		(this, TEXT("UGameplayTasksComponent"));
+	AbilitySystemComponent = PCIP.CreateDefaultSubobject<UAbilitySystemComponent>(this, TEXT("UAbilitySystemComponent"));
+	GameplayTasksComponent = PCIP.CreateDefaultSubobject<UGameplayTasksComponent>(this, TEXT("UGameplayTasksComponent"));
 	lastInput = FVector2D(0.f, 0.f);
 }
 
 void AWarrior::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
+
 	UE_LOG(LogTemp, Warning, TEXT("AWarrior::PostInitializeComponents()"));
 
 	// Would be good if InitStats accepted a Blueprint of the GameUnitAttributeSet.
-	AbilitySystemComponent->InitStats(
-		UGameUnitAttributeSet::StaticClass(), NULL);
+	AbilitySystemComponent->InitStats(UGameUnitAttributeSet::StaticClass(), NULL);
 
-	TestGameplayEffect();
-	UGameplayTask_CreateParticles* task =
-		UGameplayTask_CreateParticles::ConstructTask(this,
-			particleSystem, FVector(0.f, 0.f, 200.f));
+	//TestGameplayEffect();
+
+	UGameplayTask_CreateParticles* task = UGameplayTask_CreateParticles::ConstructTask(
+		this, particleSystem, FVector(0.f, 0.f, 200.f));
+
 	if(GameplayTasksComponent)
 	{
 		GameplayTasksComponent->AddTaskReadyForActivation(*task);
@@ -43,8 +42,10 @@ void AWarrior::PostInitializeComponents()
 
 void AWarrior::SetupPlayerInputComponent(UInputComponent* Input)
 {
-	check(Input);
 	Super::SetupPlayerInputComponent(Input);
+	check(Input);
+
+	Input->BindAction("TestFunc", IE_Pressed, this, &AWarrior::TestGameplayEffect);
 
 	Input->BindAxis("Forward", this, &AWarrior::Forward);
 	Input->BindAxis("Back", this, &AWarrior::Back);
@@ -146,9 +147,7 @@ inline UGameplayEffect* ConstructGameplayEffect(FString name)
 	return NewObject<UGameplayEffect>(GetTransientPackage(), FName(*name));
 }
 
-inline FGameplayModifierInfo& AddModifier(
-	UGameplayEffect* Effect, UProperty* Property,
-	EGameplayModOp::Type Op,
+inline FGameplayModifierInfo& AddModifier(UGameplayEffect* Effect, UProperty* Property,	EGameplayModOp::Type Op,
 	const FGameplayEffectModifierMagnitude& Magnitude)
 {
 	int32 index = Effect->Modifiers.Num();
@@ -168,13 +167,13 @@ void AWarrior::TestGameplayEffect()
 	// Compile-time checked retrieval of Hp UPROPERTY()
 	// from our UGameUnitAttributeSet class (listed in
 	// UGameUnitAttributeSet.h)
-	UProperty* hpProperty = FindFieldChecked<UProperty>(
-		UGameUnitAttributeSet::StaticClass(),
+	UProperty* hpProperty = FindFieldChecked<UProperty>(UGameUnitAttributeSet::StaticClass(),
 		GET_MEMBER_NAME_CHECKED(UGameUnitAttributeSet, Hp));
 
 	// Command the addition of +5 HP to the hpProperty
 	AddModifier(RecoverHP, hpProperty, EGameplayModOp::Additive, FScalableFloat(50.f));
 	// .. for a fixed-duration of 10 seconds ..
+
 	RecoverHP->DurationPolicy = EGameplayEffectDurationType::HasDuration;
 	RecoverHP->DurationMagnitude = FScalableFloat(10.f);
 	// .. with 100% chance of success ..
@@ -183,8 +182,7 @@ void AWarrior::TestGameplayEffect()
 	RecoverHP->Period = 0.5f;
 
 	// Finally, begin application of the effect.
-	FActiveGameplayEffectHandle recoverHpEffectHandle =
-		AbilitySystemComponent->ApplyGameplayEffectToTarget(
+	FActiveGameplayEffectHandle recoverHpEffectHandle =	AbilitySystemComponent->ApplyGameplayEffectToTarget(
 			RecoverHP, AbilitySystemComponent, 1.f);
 
 	// Retrieve the delegate. If it has no duration how can we
