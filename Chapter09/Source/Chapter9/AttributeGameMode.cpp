@@ -9,7 +9,7 @@
 FText AAttributeGameMode::GetButtonLabel() const
 {
 	FVector ActorLocation = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation();
-	return FText::FromString(FString::Printf(TEXT("%f, %f, %f"), ActorLocation.X, ActorLocation.Y, ActorLocation.Z));
+	return FText::FromString(FString::Printf(TEXT("-%f, %f, %f"), ActorLocation.X, ActorLocation.Y, ActorLocation.Z));
 }
 
 void AAttributeGameMode::BeginPlay()
@@ -21,15 +21,11 @@ void AAttributeGameMode::BeginPlay()
 	Widget = SNew(SVerticalBox)
 		+ SVerticalBox::Slot()
 		.HAlign(HAlign_Center)
-		.VAlign(VAlign_Center)
+		.VAlign(VAlign_Bottom)
 		[
-			SNew(SButton)
-			.Content()
-			[
-				SNew(STextBlock)
-				.Text(TAttribute<FText>::Create(TAttribute<FText>::FGetter::CreateUObject(this, 
-					&AAttributeGameMode::GetButtonLabel)))
-			]
+			SNew(STextBlock)
+			.Text(TAttribute<FText>::Create(TAttribute<FText>::FGetter::CreateUObject(this,
+				&AAttributeGameMode::GetButtonLabel)))
 		];
 
 	GEngine->GameViewport->AddViewportWidgetForPlayer(GetWorld()->GetFirstLocalPlayerFromController(),

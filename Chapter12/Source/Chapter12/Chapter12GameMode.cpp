@@ -254,8 +254,7 @@ void AChapter12GameMode::TestHttp()
 	//    progressbar for longer http requests.
 	http->OnRequestProgress().BindLambda(
 		[this](FHttpRequestPtr request, int32 sentBytes, int32 receivedBytes)
-		-> void
-	{
+		-> void {
 		int32 contentLen = request->GetResponse()->GetContentLength();
 		float percentComplete = 100.f*receivedBytes / contentLen;
 

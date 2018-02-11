@@ -63,7 +63,7 @@ public:
 	float ScalingMin;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Foliage)
-		float ScalingMax;
+	float ScalingMax;
 
 	/// Foliage correlation
 	/// Trees sit within a band of values, eg 0.4 < PTV < 0.6.
